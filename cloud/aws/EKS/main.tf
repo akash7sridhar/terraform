@@ -1,7 +1,7 @@
 locals {
-  name            = var.kubeclustername
+  name            = "akash-test-eks"
   cluster_version = "1.21"
-  region          = var.region
+  region          = "ap-south-1"
 
   tags = {
     Example    = local.name
@@ -113,7 +113,7 @@ module "eks" {
 
 resource "null_resource" "config_kubectl" {
   provisioner "local-exec" {
-   command = "aws eks --region ap-south-1 update-kubeconfig --name akash-test-eks"
+   command = "aws eks --region ${local.region} update-kubeconfig --name ${local.name}"
 
   }
   depends_on = [
