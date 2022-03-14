@@ -9,3 +9,14 @@ resource "helm_release" "hello-works" {
     file("./charts/hello-world/values.yaml") 
      ]
 }
+
+# Deploy Kubernetes dashboard from remote repository
+
+resource "helm_release" "kube-dashboard" {
+  name = "kube-dashboard"
+  namespace = var.namespace
+  repository = "https://kubernetes.github.io/dashboard/"
+  chart      = "kubernetes-dashboard"
+  timeout   = 600
+
+}
