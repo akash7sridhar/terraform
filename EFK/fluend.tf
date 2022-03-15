@@ -1,4 +1,10 @@
+################################################################################
+# Deploy Fluentd
+################################################################################
+
+
 resource "kubectl_manifest" "fluentd-elasticsearch-output-configmap" {
+    override_namespace = var.namespace
     yaml_body = file("./charts/EFK-fluentbit/fluentd/fluentd-elasticsearch-output-configmap.yaml")
 }
 

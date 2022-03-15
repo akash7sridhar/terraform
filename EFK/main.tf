@@ -1,4 +1,7 @@
-#Deploy Kubernetes dashboard from remote repository
+################################################################################
+# Deploy Elastic Search with helm
+################################################################################
+
 
 resource "helm_release" "elasticsearch" {
   name = "elasticsearch"
@@ -8,6 +11,11 @@ resource "helm_release" "elasticsearch" {
   timeout   = 300
 
 }
+
+
+################################################################################
+# Deploy Kibana with helm 
+################################################################################
 
 resource "helm_release" "kibana" {
   name = "kibana"
