@@ -51,7 +51,6 @@ module "ec2_complete" {
   availability_zone           = "${local.region}a"
   subnet_id                   = element(data.terraform_remote_state.vpc.outputs.private_subnets, 0)
   vpc_security_group_ids      = [module.security_group.security_group_id]
-#   placement_group             = aws_placement_group.web.id
   associate_public_ip_address = true
 
   # only one of these can be enabled at a time
@@ -60,12 +59,6 @@ module "ec2_complete" {
 
   user_data_base64 = base64encode(local.user_data)
 
-#   cpu_core_count       = 2 # default 4
-#   cpu_threads_per_core = 1 # default 2
-
-#   capacity_reservation_specification = {
-#     capacity_reservation_preference = "open"
-#   }
 
   enable_volume_tags = false
   root_block_device = [
